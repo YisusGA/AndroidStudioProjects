@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgLake"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="lake_image"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/fondo_montanas" />
+
+    <ImageView
+        android:id="@+id/imgBeach"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="beach_image"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:srcCompat="@drawable/fondo_playa" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom|center_horizontal|start"
+        android:background="#B3000000"
+        android:paddingStart="30dp"
+        android:paddingTop="20dp"
+        android:text="Lake"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <ImageButton
+        android:id="@+id/btnNext"
+        android:layout_width="98dp"
+        android:layout_height="92dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/fondo_redondeado"
+        android:contentDescription="next"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_siguiente" />
+
+</FrameLayout>

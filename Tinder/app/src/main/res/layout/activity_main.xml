@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imgPerson"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/fondo_perfil" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:background="#CC000000"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:text="Lucía Martín"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <ImageButton
+        android:id="@+id/imgHeart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/fondo_redondeado_blanco"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ic_favorito" />
+
+    <TextView
+        android:id="@+id/txtSavedProfile"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:background="@drawable/fondo_redondeado_negro_transp80"
+        android:drawableTop="@drawable/check_verde"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:text="Perfil guardado"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        tools:visibility="gone" />
+
+</FrameLayout>
