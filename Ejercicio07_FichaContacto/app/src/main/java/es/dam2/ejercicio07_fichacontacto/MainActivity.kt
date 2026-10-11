@@ -37,19 +37,34 @@ class MainActivity : AppCompatActivity() {
         txtEditNombre.setOnClickListener {
             txtEditNombre.setTextColor(Color.BLACK)
             txtEditNombre.setText("")
-            btnGuardar.isClickable = true
-        }
-
-        txtEditTelefono.setOnClickListener {
             txtEditTelefono.setTextColor(Color.BLACK)
             txtEditTelefono.setText("")
-            btnGuardar.isClickable = true
-        }
-
-        txtEditCorreo.setOnClickListener {
             txtEditCorreo.setTextColor(Color.BLACK)
             txtEditCorreo.setText("")
             btnGuardar.isClickable = true
+            btnGuardar.alpha = 1f
+        }
+
+        txtEditTelefono.setOnClickListener {
+            txtEditNombre.setTextColor(Color.BLACK)
+            txtEditNombre.setText("")
+            txtEditTelefono.setTextColor(Color.BLACK)
+            txtEditTelefono.setText("")
+            txtEditCorreo.setTextColor(Color.BLACK)
+            txtEditCorreo.setText("")
+            btnGuardar.isClickable = true
+            btnGuardar.alpha = 1f
+        }
+
+        txtEditCorreo.setOnClickListener {
+            txtEditNombre.setTextColor(Color.BLACK)
+            txtEditNombre.setText("")
+            txtEditTelefono.setTextColor(Color.BLACK)
+            txtEditTelefono.setText("")
+            txtEditCorreo.setTextColor(Color.BLACK)
+            txtEditCorreo.setText("")
+            btnGuardar.isClickable = true
+            btnGuardar.alpha = 1f
         }
 
         btnGuardar.setOnClickListener {
@@ -70,18 +85,21 @@ class MainActivity : AppCompatActivity() {
                 txtEditNombre.setTextColor(Color.RED)
                 txtEditNombre.setText("Debes introducir un nombre")
                 btnGuardar.isClickable = false
+                btnGuardar.alpha = 0.2f
             }
 
             if (telefono == null || telefono.isBlank()) {
                 txtEditTelefono.setTextColor(Color.RED)
                 txtEditTelefono.setText("Debes introducir un teléfono")
                 btnGuardar.isClickable = false
+                btnGuardar.alpha = 0.2f
             }
 
             if (correo == null || correo.isBlank()) {
                 txtEditCorreo.setTextColor(Color.RED)
                 txtEditCorreo.setText("Debes introducir un correo")
                 btnGuardar.isClickable = false
+                btnGuardar.alpha = 0.2f
             }
         }
     }
