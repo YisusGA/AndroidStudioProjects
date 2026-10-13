@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PracticaLayoutEj2</string>
+    <string name="et_cabecera">Cabecera</string>
+    <string name="et_texto1">Texto 1</string>
+    <string name="et_texto2">Texto 2</string>
+    <string name="btn_uno">Botón 1</string>
+    <string name="btn_dos">Botón 2</string>
+    <string name="btn_tres">Botón 3</string>
+</resources>

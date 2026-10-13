@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PracticaLayouts</string>
+    <string name="title">Practicando vistas</string>
+    <string name="imgPerroGatoNegro">Imagen de perro y gato negro</string>
+    <string name="imgPerroGatoSiames">Imagen de perro y gato siamés</string>
+    <string name="txtMessage">Sobre perros y gatos</string>
+    <string name="changeImage">Cambiar imagen</string>
+    <string name="check">Comprobar</string>
+    <string name="grid00Text">Fila 0</string>
+    <string name="grid01Text">Fil0, Col1</string>
+    <string name="grid10Text">Fil1, Col0</string>
+    <string name="grid11Text">Fil1, Col1</string>
+    <!-- Aquí indicamos que vamos a pasar 2 parámetros para completar el contenido: el primero será
+    de tipo numérico (d), y el segundo de tipo cadena (s)-->
+    <string name="selectedImageMessage">Está seleccionada la imagen %1$d: %2$s</string>
+</resources>
