@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTitulo" />
 
     <SeekBar
-        android:id="@+id/seekBarDuracion"
+        android:id="@+id/seekBarReproduccion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -82,8 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/seekBarDuracion"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarDuracion" />
+        app:layout_constraintStart_toStartOf="@+id/seekBarReproduccion"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarReproduccion" />
 
     <TextView
         android:id="@+id/txtTiempoTotal"
@@ -91,8 +91,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/seekBarDuracion"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarDuracion" />
+        app:layout_constraintEnd_toEndOf="@+id/seekBarReproduccion"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarReproduccion" />
 
     <ImageButton
         android:id="@+id/btnAnterior"
@@ -105,7 +105,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarDuracion"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarReproduccion"
         android:background="@drawable/fondo_redondeado"
         app:srcCompat="@drawable/ic_anterior" />
 

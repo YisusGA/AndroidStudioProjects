@@ -35,17 +35,20 @@ class MainActivity : AppCompatActivity() {
             // MediaPlayer (una abreviatura de getCurrentPosition()) nos devuelve el tiempo en esa
             // unidad
             if (mediaPlayer?.isPlaying == true) {
-                binding.seekBarDuracion.progress = mediaPlayer!!.currentPosition / 1000
+                binding.seekBarReproduccion.progress = mediaPlayer!!.currentPosition / 1000
+                // Esto hace que se ejecute cada segundo, y no continuamente. Así, se ahorran
+                // recursos. Si se pusiera cada 5000 ms, la barra de progreso se actualizaría cada
+                // 5 segundos
                 handler.postDelayed(this, 1000)
             }
 
         }
     }
 
-    private var enCurso: Int = 0
+    private var indiceReproduccionActual: Int = 0
 
     // Una lista mutable donde vamos a almacenar una lista con las canciones disponibles
-    private lateinit var datos: MutableList<Cancion>
+    private lateinit var playlistCanciones: MutableList<Cancion>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Reflejar el movimiento del usuario
-        binding.seekBarDuracion.setOnSeekBarChangeListener(
+        binding.seekBarReproduccion.setOnSeekBarChangeListener(
             object : SeekBar.OnSeekBarChangeListener {
 
                 override fun onProgressChanged(
@@ -80,7 +83,8 @@ class MainActivity : AppCompatActivity() {
 
         )
 
-        datos = mutableListOf<Cancion>(
+        // El tercer parámetro, que le dice la Canción, se almacena como un Int (entero)
+        playlistCanciones = mutableListOf<Cancion>(
             Cancion("Tensión", "Tensor", R.raw.tension),
             Cancion("Suspense", "Suspenso", R.raw.suspense),
             Cancion("Miedo", "Miedoso", R.raw.frighten),
@@ -103,15 +107,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.btnSiguiente.setOnClickListener {
-            if (enCurso < datos.size - 1) {
-                enCurso++
+            if (indiceReproduccionActual < playlistCanciones.size - 1) {
+                indiceReproduccionActual++
                 cargarCancion()
             }
         }
 
         binding.btnAnterior.setOnClickListener {
-            if (enCurso > 0) {
-                enCurso--
+            if (indiceReproduccionActual > 0) {
+                indiceReproduccionActual--
                 cargarCancion()
             }
         }
@@ -119,19 +123,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cargarCancion() {
+        // Cancela hilos en ejecución
         handler.removeCallbacks(runnable)
+        // Elimina canciones que estuvieran asociadas al reproductor
         mediaPlayer?.release()
         // CUIDADO1: El método create() es estático, así que tiene que llamarse con
         // la clase, no con la instancia
         // CUIDADO2: Al crear la instancia de MediaPlayer, debemos almacenar esa instancia en la
         // variable mediaPlayer, para que esta no siga siendo nula y no dé error al lanzar la app
-        mediaPlayer =  MediaPlayer.create(this, datos[enCurso].pista)
-        binding.txtTitulo.text = datos[enCurso].titulo
-        binding.txtArtista.text = datos[enCurso].autor
+        mediaPlayer =  MediaPlayer.create(this, playlistCanciones[indiceReproduccionActual].pista)
+        binding.txtTitulo.text = playlistCanciones[indiceReproduccionActual].titulo
+        binding.txtArtista.text = playlistCanciones[indiceReproduccionActual].autor
         binding.txtTiempoTotal.text = formatearTiempo(mediaPlayer!!.duration/1000)
 
-        binding.seekBarDuracion.max = mediaPlayer!!.duration / 1000
-        binding.seekBarDuracion.progress = 0
+        binding.seekBarReproduccion.max = mediaPlayer!!.duration / 1000
+        binding.seekBarReproduccion.progress = 0
         binding.btnReproducir.setImageResource(R.drawable.ic_reproducir)
 
         // Actualizamos los botones cada vez que cargamos una canción
@@ -140,7 +146,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun actualizarEstadoBotones() {
         // Botón Anterior
-        if (enCurso == 0) {
+        if (indiceReproduccionActual == 0) {
             binding.btnAnterior.isClickable = false
             binding.btnAnterior.alpha = 0.5F
         } else {
@@ -149,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Botón Siguiente
-        if (enCurso == datos.size - 1) {
+        if (indiceReproduccionActual == playlistCanciones.size - 1) {
             binding.btnSiguiente.isClickable = false
             binding.btnSiguiente.alpha = 0.5F
         } else {
