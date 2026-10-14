@@ -30,7 +30,7 @@
         android:layout_marginEnd="10dp"
         android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrera"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -51,19 +51,8 @@
         android:id="@+id/barrera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="left"
-        app:constraint_referenced_ids="textView3"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
-        android:layout_marginEnd="301dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@id/barrera"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="textView3" />
 
     <Button
         android:id="@+id/button2"
@@ -123,16 +112,19 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="82dp"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        tools:layout_editor_absoluteX="256dp" />
+        app:layout_constraintStart_toEndOf="@id/barrera" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="TextView TextView TextView TextView TextView"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="225dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="50dp"
+        android:text="TextView TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

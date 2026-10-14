@@ -71,15 +71,15 @@ class MainActivity : AppCompatActivity() {
             val nombre = txtEditNombre.text
             val telefono = txtEditTelefono.text
             val correo = txtEditCorreo.text
-            if (nombre != null && !nombre.isBlank() && telefono != null && !telefono.isBlank() && correo != null && !correo.isBlank()) {
-                // Maketext(Instancia de la clase, texto, duración del mensaje)
+            if (!nombre.isNullOrBlank() && !telefono.isNullOrBlank() && !correo.isNullOrBlank()) {
+                //Toast.makeText(Instancia de la clase, texto, duración del mensaje)
                 Toast.makeText(this@MainActivity, "Guardado en el baúl de los recuerdos", Toast.LENGTH_SHORT).show()
                 txtEditNombre.setText("")
                 txtEditTelefono.setText("")
                 txtEditCorreo.setText("")
             }
 
-            if (nombre == null || nombre.isBlank()) {
+            if (nombre.isNullOrBlank()) {
                 // No se puede hacer txtEditNombre.text = "Cadena" porque txtEditNombre.text no
                 // devuelve un String, sino un Editable
                 txtEditNombre.setTextColor(Color.RED)
@@ -88,14 +88,14 @@ class MainActivity : AppCompatActivity() {
                 btnGuardar.alpha = 0.2f
             }
 
-            if (telefono == null || telefono.isBlank()) {
+            if (telefono.isNullOrBlank()) {
                 txtEditTelefono.setTextColor(Color.RED)
                 txtEditTelefono.setText("Debes introducir un teléfono")
                 btnGuardar.isClickable = false
                 btnGuardar.alpha = 0.2f
             }
 
-            if (correo == null || correo.isBlank()) {
+            if (correo.isNullOrBlank()) {
                 txtEditCorreo.setTextColor(Color.RED)
                 txtEditCorreo.setText("Debes introducir un correo")
                 btnGuardar.isClickable = false
