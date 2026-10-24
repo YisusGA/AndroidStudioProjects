@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LayoutPractice</string>
+    <string name="title">Practicing view uses</string>
+    <string name="imgPerroGatoNegro">Dog and black cat image</string>
+    <string name="imgPerroGatoSiames">Dog and siamese cat image</string>
+    <string name="txtMessage">About cat and dogs</string>
+    <string name="changeImage">Switch image</string>
+    <string name="check">Check</string>
+    <string name="grid00Text">Row 0</string>
+    <string name="grid01Text">Row0, Col1</string>
+    <string name="grid10Text">Row1, Col0</string>
+    <string name="grid11Text">Row1, Col1</string>
+    <!-- Aquí indicamos que vamos a pasar 2 parámetros para completar el contenido: el primero será
+    de tipo numérico (d), y el segundo de tipo cadena (s)-->
+    <string name="selectedImageMessage">Image number %d is selected: %s</string>
+</resources>

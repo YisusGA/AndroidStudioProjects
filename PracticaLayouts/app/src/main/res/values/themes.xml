@@ -1,9 +1,17 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.PracticaLayouts" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.PracticaLayouts" parent="Base.Theme.PracticaLayouts" />
+    <style name="Theme.PracticaLayouts" parent="Base.Theme.PracticaLayouts">
+        <!-- Todo lo que se quiera aplicar de forma global, lo metemos aquí -->
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <!-- Este estilo hereda de un padre, así que puedo aplicar el padre sólo o el padre y el hijo -->
+    <style name="Theme.PracticaLayouts.colorBlanco" parent="Theme.PracticaLayouts">
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
