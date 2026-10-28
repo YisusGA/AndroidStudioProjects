@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     // Nos permite no tener que referenciar a cada una de las vistas por separado (findViewById…)
     // Ver pdf de ViewBinding para mayor detalle
     private lateinit var binding: ActivityMainBinding
-    private lateinit var btnReiniciar: Button
 
     // turno 1: X; turno 2: O
     private var turno: Int = 1
@@ -70,9 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnReiniciar = findViewById<Button>(R.id.btnReiniciar)
-
-        btnReiniciar.setOnClickListener {
+        binding.btnReiniciar.setOnClickListener {
             celdas.forEach { img -> img.setImageResource(R.drawable.ic_celda) }
             turno = 1
         }
