@@ -24,17 +24,25 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <ImageView
-        android:id="@+id/imgPortada"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
-        android:layout_height="228dp"
+        android:layout_height="350dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/portada_horizonte" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgPortada"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/portada_horizonte" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -49,7 +57,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgPortada" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/txtArtista"
@@ -100,13 +108,13 @@
         android:layout_height="64dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="100dp"
+        android:background="@drawable/fondo_redondeado"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toStartOf="@+id/btnReproducir"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBarReproduccion"
-        android:background="@drawable/fondo_redondeado"
         app:srcCompat="@drawable/ic_anterior" />
 
     <ImageButton

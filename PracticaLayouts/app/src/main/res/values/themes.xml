@@ -7,7 +7,7 @@
 
     <style name="Theme.PracticaLayouts" parent="Base.Theme.PracticaLayouts">
         <!-- Todo lo que se quiera aplicar de forma global, lo metemos aquí -->
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <!-- Este estilo hereda de un padre, así que puedo aplicar el padre sólo o el padre y el hijo -->

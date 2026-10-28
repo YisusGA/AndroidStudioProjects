@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Es muy importante que los name de las string sean los mismos en todos los ficheros de
+    strings.xml, para que Android pueda escoger las que toquen según el idioma -->
     <string name="app_name">LayoutPractice</string>
     <string name="title">Practicing view uses</string>
     <string name="imgPerroGatoNegro">Dog and black cat image</string>
