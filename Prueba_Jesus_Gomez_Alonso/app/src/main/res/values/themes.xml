@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Prueba_Jesus_Gomez_Alonso" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Prueba_Jesus_Gomez_Alonso" parent="Base.Theme.Prueba_Jesus_Gomez_Alonso" >
+        <item name="fontFamily">@font/bree_serif</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Como esto lo quiero aplicar a un FrameLayout, y no a una View, y el nombre comienza por la
+    palabra Theme, debe aplicarse en el atributo theme del FrameLayout. Si lo aplicáramos a una View,
+    se aplicaría a su atributo style -->
+    <style name="Theme.Prueba_Jesus_Gomez_Alonso.Header" parent="Theme.Prueba_Jesus_Gomez_Alonso">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
+</resources>
