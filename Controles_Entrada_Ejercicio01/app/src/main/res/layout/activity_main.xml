@@ -136,7 +136,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxNormas" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNormas"
+        app:strokeColor="#000000"
+        app:strokeWidth="5dp" />
 
     <Button
         android:id="@+id/btnLimpiar"
@@ -147,7 +149,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnInscribirme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnInscribirme" />
+        app:layout_constraintStart_toEndOf="@+id/btnInscribirme"
+        app:strokeColor="#000000"
+        app:strokeWidth="5dp" />
 
     <TextView
         android:id="@+id/txtResultado"
