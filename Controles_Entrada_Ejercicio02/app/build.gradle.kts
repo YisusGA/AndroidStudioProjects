@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "es.dam2.controles_entrada_ejercicio02"
-        minSdk = 37
+        minSdk = 35
         targetSdk = 37
         versionCode = 1
         versionName = "1.0"
