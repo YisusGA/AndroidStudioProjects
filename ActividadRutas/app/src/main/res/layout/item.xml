@@ -8,7 +8,7 @@
     android:layout_marginBottom="20dp">
 
     <ImageView
-        android:id="@+id/imgRuta"
+        android:id="@+id/imgRutaItem"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:scaleType="centerCrop"
@@ -24,11 +24,11 @@
         android:paddingStart="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgRuta"
-        app:layout_constraintTop_toTopOf="@+id/imgRuta">
+        app:layout_constraintStart_toEndOf="@+id/imgRutaItem"
+        app:layout_constraintTop_toTopOf="@+id/imgRutaItem">
 
         <TextView
-            android:id="@+id/txtTitulo"
+            android:id="@+id/txtTituloItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Titulo"
@@ -43,7 +43,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtDistancia"
+                android:id="@+id/txtDistanciaItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -58,7 +58,7 @@
                 android:text="-" />
 
             <TextView
-                android:id="@+id/txtDificultad"
+                android:id="@+id/txtDificultadItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
@@ -66,13 +66,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txtDuracion"
+            android:id="@+id/txtDuracionItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Duracion" />
 
         <ImageView
-            android:id="@+id/imgFavorita"
+            android:id="@+id/imgFavoritaItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

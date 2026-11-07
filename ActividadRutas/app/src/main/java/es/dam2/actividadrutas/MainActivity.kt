@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import es.dam2.actividadrutas.databinding.ActivityMainBinding
@@ -36,8 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.txtRutasDisponibles.text = "${customAdapter.itemCount} rutas disponibles"
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = customAdapter
+        binding.customRecyclerView.layoutManager = LinearLayoutManager(this)
+        // Si se quisiera usar un GridLayoutManager, comentar la línea de arriba y descomentar la
+        // de abajo
+//        binding.customRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.customRecyclerView.adapter = customAdapter
     }
 
     override fun onResume() {

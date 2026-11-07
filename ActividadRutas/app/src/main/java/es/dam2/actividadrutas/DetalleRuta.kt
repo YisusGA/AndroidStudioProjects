@@ -28,15 +28,15 @@ class DetalleRuta : AppCompatActivity() {
             val ruta = RepositorioRutas.dataset[posicion]
 
             binding.imgRutaDetalle.setImageResource(ruta.image)
-            binding.txtTitulo.text = ruta.titulo
-            binding.txtDistancia.text = ruta.distancia
-            binding.txtDificultad.text = ruta.dificultad
-            binding.txtDuracion.text = ruta.duracion
-            binding.txtDescripcion.text = ruta.descripcion
-            binding.imgFavorita.setImageResource(if (ruta.esFavorita) R.drawable.ic_favorito_on else R.drawable.ic_favorito_off)
-            binding.imgFavorita.setOnClickListener {
+            binding.txtTituloDetalle.text = ruta.titulo
+            binding.txtDistanciaDetalle.text = ruta.distancia
+            binding.txtDificultadDetalle.text = ruta.dificultad
+            binding.txtDuracionDetalle.text = ruta.duracion
+            binding.txtDescripcionDetalle.text = ruta.descripcion
+            binding.imgFavoritaDetalle.setImageResource(if (ruta.esFavorita) R.drawable.ic_favorito_on else R.drawable.ic_favorito_off)
+            binding.imgFavoritaDetalle.setOnClickListener {
                 ruta.esFavorita = !ruta.esFavorita
-                binding.imgFavorita.setImageResource(if (ruta.esFavorita) R.drawable.ic_favorito_on else R.drawable.ic_favorito_off)
+                binding.imgFavoritaDetalle.setImageResource(if (ruta.esFavorita) R.drawable.ic_favorito_on else R.drawable.ic_favorito_off)
             }
         }
 
