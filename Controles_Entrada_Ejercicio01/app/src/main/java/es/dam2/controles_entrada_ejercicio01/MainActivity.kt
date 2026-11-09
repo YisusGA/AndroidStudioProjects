@@ -3,7 +3,10 @@ package es.dam2.controles_entrada_ejercicio01
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spanned
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
@@ -36,8 +39,41 @@ class MainActivity : AppCompatActivity() {
         // Asociar el adaptador al Spinner
         binding.spinnerTaller.adapter = adaptador
 
+        // Gestionar evento de cambio de selección en el Spinner y almacenar la selección en una variable
+        var opcionSeleccionadaSpinner = ""
+        binding.spinnerTaller.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                // Así es como se hace un casting en Kotlin
+                opcionSeleccionadaSpinner = parent!!.getItemAtPosition(position) as String
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                opcionSeleccionadaSpinner = ""
+            }
+        }
+
+        // Gestionar evento de selección en el RadioGroup y almacenar la selección en una variable
+        var opcionSeleccionadaRadioGroup = ""
+        binding.radioGroupTurno.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                binding.radioButtonManana.id ->
+                    opcionSeleccionadaRadioGroup = binding.radioButtonManana.text.toString()
+                binding.radioButtonTarde.id ->
+                    opcionSeleccionadaRadioGroup = binding.radioButtonTarde.text.toString()
+            }
+        }
+
+        // En esta app, no uso la checkbox para más que comprobar si está marcada o no, porque
+        // no me interesa hacer más. En la chuleta, está puesto en más detalle cómo se gestionaría
+        // un evento de cambio de selección en una CheckBox
+
         binding.btnInscribirme.setOnClickListener {
-            if (comprobarFormRelleno(binding)) {
+            if (comprobarFormRelleno(binding, opcionSeleccionadaSpinner, opcionSeleccionadaRadioGroup)) {
                 binding.txtResultado.text = ""
                 binding.txtResultado.setBackgroundColor("#FF6750A4".toColorInt())
                 binding.txtResultado.append(construirNodosHtml(binding))
@@ -52,14 +88,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun comprobarFormRelleno(binding: ActivityMainBinding): Boolean {
+    private fun comprobarFormRelleno(binding: ActivityMainBinding, opcionSeleccionadaSpinner: String, opcionSeleccionadaRadioGroup: String): Boolean {
         var formRelleno = false
         if (
             !binding.textInputEditTextNombre.text.isNullOrBlank() &&
             !binding.textInputEditTextCorreo.text.isNullOrBlank() &&
-            binding.spinnerTaller.selectedItem != null &&
-            !binding.spinnerTaller.selectedItem.toString().isBlank() &&
-            binding.radioGroupTurno.checkedRadioButtonId != -1 &&
+            !opcionSeleccionadaSpinner.isBlank() &&
+            !opcionSeleccionadaRadioGroup.isBlank() &&
             binding.checkBoxNormas.isChecked
         ) {
             formRelleno = true
