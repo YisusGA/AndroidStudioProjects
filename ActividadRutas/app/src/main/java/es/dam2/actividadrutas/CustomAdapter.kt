@@ -58,14 +58,14 @@ class CustomAdapter(
         // Esta es una forma más sencilla que la que vimos en clase de poner un ClickListener a un
         // elemento del Item (como una estrella de favorito), y no al item entero
         customViewHolder.favorita.setOnClickListener {
-            dataSet[position].esFavorita = !dataSet[position].esFavorita
+            dataSet[customViewHolder.bindingAdapterPosition].esFavorita = !dataSet[customViewHolder.bindingAdapterPosition].esFavorita
             // Se puede cambiar manualmente la imagen (con el if-else comentado aquí debajo)
             // o notificar al recycler que el item en esa posición ha cambiado
 //            if (dataSet[position].esFavorita)
 //                customViewHolder.favorita.setImageResource(R.drawable.ic_favorito_on)
 //            else
 //                customViewHolder.favorita.setImageResource(R.drawable.ic_favorito_off)
-            notifyItemChanged(position)
+            notifyItemChanged(customViewHolder.bindingAdapterPosition)
         }
 
 
