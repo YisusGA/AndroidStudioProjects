@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(
     private val dataSet: MutableList<Dato>,
-    private val onItemClick: (Dato) -> Unit
+    private val onItemClick: (Dato, Int) -> Unit
 ) : RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
     /**
      * Provide a reference to the type of views that you are using
@@ -72,7 +72,7 @@ class CustomAdapter(
         // Al hacer click en un item, se manda la posición de ese item, para poder cargarlo
         // luego desde RepositorioRutas.dataset
         customViewHolder.itemView.setOnClickListener {
-            onItemClick(dataSet[customViewHolder.bindingAdapterPosition])
+            onItemClick(dataSet[customViewHolder.bindingAdapterPosition], customViewHolder.bindingAdapterPosition)
         }
     }
 

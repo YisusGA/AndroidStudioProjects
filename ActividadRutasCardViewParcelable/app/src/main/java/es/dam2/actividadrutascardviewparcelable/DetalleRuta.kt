@@ -1,5 +1,6 @@
 package es.dam2.actividadrutascardviewparcelable
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,9 +23,10 @@ class DetalleRuta : AppCompatActivity() {
         }
 
         val ruta = intent.getParcelableExtra<Dato>("RutaSeleccionada")
+        val posicionSeleccionada = intent.getIntExtra("PosicionSeleccionada", -1)
 
 
-        if (ruta != null) {
+        if (ruta != null && posicionSeleccionada != -1) {
 
             binding.imgRutaDetalle.setImageResource(ruta.image)
             binding.txtTituloDetalle.text = ruta.titulo
@@ -40,6 +42,9 @@ class DetalleRuta : AppCompatActivity() {
         }
 
         binding.btnVolver.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("RutaModificada", ruta)
+            intent.putExtra("PosicionModificada", posicionSeleccionada)
             this.finish()
         }
     }

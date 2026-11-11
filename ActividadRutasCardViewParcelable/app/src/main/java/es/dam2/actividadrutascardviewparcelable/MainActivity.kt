@@ -27,9 +27,10 @@ class MainActivity : AppCompatActivity() {
 
         // A la derecha de los corchetes, se define el comportamiento de la función onItemClick
         // que pusimos como parámetro de CustomAdapter
-        customAdapter = CustomAdapter(RepositorioRutas.dataset) { dato ->
+        customAdapter = CustomAdapter(RepositorioRutas.dataset) { dato, posicion ->
             val intent = Intent(this, DetalleRuta::class.java)
             intent.putExtra("RutaSeleccionada", dato)
+            intent.putExtra("PosicionSeleccionada", posicion)
             startActivity(intent)
         }
 
@@ -45,7 +46,13 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (::customAdapter.isInitialized) {
-            customAdapter.notifyDataSetChanged()
+            val ruta = intent.getParcelableExtra<Dato>("RutaModificada")
+            val posicionSeleccionada = intent.getIntExtra("PosicionModificada", -1)
+            if (ruta != null && posicionSeleccionada != -1) {
+                customAdapter.notifyItemChanged(posicionSeleccionada, ruta)
+            }
+
+//            customAdapter.notifyDataSetChanged()
         }
     }
 }
