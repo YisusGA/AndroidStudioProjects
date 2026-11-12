@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomAdapter(
     private val dataSet: MutableList<Dato>,
-    private val onItemClick: (Dato, Int) -> Unit
+    private val onItemClick: (Dato, Int) -> Unit,
+    // Esta función está metida únicamente como prueba de concepto, realmente no aporta nada
+    private val onFavClick: (Dato) -> Unit
 ) : RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
     /**
      * Provide a reference to the type of views that you are using
@@ -66,6 +68,7 @@ class CustomAdapter(
 //            else
 //                customViewHolder.favorita.setImageResource(R.drawable.ic_favorito_off)
             notifyItemChanged(customViewHolder.bindingAdapterPosition)
+            onFavClick(dataSet[customViewHolder.bindingAdapterPosition])
         }
 
 

@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         // A la derecha de los corchetes, se define el comportamiento de la función onItemClick
-        // que pusimos como parámetro de CustomAdapter
+        // que pusimos como parámetro de CustomAdapter. Cuando se pasa sólo una función como
+        // parámetro, se puede pasar o bien dentro de los paréntesis, entre llaves y separada por
+        // coma del parámetro anterior, o bien como se ve aquí debajo
         customAdapter = CustomAdapter(RepositorioRutas.dataset) { posicion ->
             posicionSeleccionada = posicion
             val intent = Intent(this, DetalleRuta::class.java)

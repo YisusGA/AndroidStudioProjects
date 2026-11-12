@@ -22,7 +22,7 @@ class DetalleRuta : AppCompatActivity() {
             insets
         }
 
-        val ruta = intent.getParcelableExtra<Dato>("RutaSeleccionada")
+        val ruta = intent.getParcelableExtra<Dato>("RutaSeleccionada", Dato::class.java)
         val posicionSeleccionada = intent.getIntExtra("PosicionSeleccionada", -1)
 
 

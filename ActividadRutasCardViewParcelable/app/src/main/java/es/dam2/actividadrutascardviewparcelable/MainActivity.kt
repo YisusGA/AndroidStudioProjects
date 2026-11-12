@@ -2,6 +2,7 @@ package es.dam2.actividadrutascardviewparcelable
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var customAdapter: CustomAdapter
     private lateinit var dataset: MutableList<Dato>
     // Declaramos el launcher para recibir el resultado de DetalleRuta.
-    // Esta variable es de tipo ActivityResultLauncher
+    // Esta variable es de tipo ActivityResultLauncher. Esto no lo vamos a ver ni lo vamos a usar,
+    // pues nosotros trabajaremos con bases de datos para leer y escribir datos, y seguiremos una
+    // arquitectura diferente
     private val launcherDetalle = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
@@ -101,14 +104,22 @@ class MainActivity : AppCompatActivity() {
             ),
         )
 
-        // A la derecha de los corchetes, se define el comportamiento de la función onItemClick
-        // que pusimos como parámetro de CustomAdapter
-        customAdapter = CustomAdapter(dataset) { dato, posicion ->
+        // Cuando tenemos que pasar más de 1 función como parámetro, todas menos la última deben ir
+        // obligatoriamente dentro de los  paréntesis, separadas por coma de los otros parámetros y funciones.
+        // Y la última puede ir o bien fuera de  los paréntesis, entre llaves, y sin coma que la separe del
+        // paréntesis o bien meterla entre llaves dentro de los paréntesis, y separarla
+        // con coma del parámetro/función anterior. Esta última forma es la más limpia
+        customAdapter = CustomAdapter(dataset, { dato, posicion ->
             val intent = Intent(this, DetalleRuta::class.java)
             intent.putExtra("RutaSeleccionada", dato)
             intent.putExtra("PosicionSeleccionada", posicion)
             launcherDetalle.launch(intent)
-        }
+            startActivity(intent)
+            // Esta función está metida únicamente como prueba de concepto, realmente no aporta nada
+        }, {dato ->
+            System.out.printf("Ruta %s añadida como favorita\n", dato.titulo)
+        })
+
 
         binding.txtRutasDisponibles.text = "${customAdapter.itemCount} rutas disponibles"
 
@@ -122,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         if (::customAdapter.isInitialized) {
-            val ruta = intent.getParcelableExtra<Dato>("RutaModificada")
+            val ruta = intent.getParcelableExtra<Dato>("RutaModificada", Dato::class.java)
             val posicionSeleccionada = intent.getIntExtra("PosicionModificada", -1)
             if (ruta != null && posicionSeleccionada != -1) {
                 customAdapter.notifyItemChanged(posicionSeleccionada, ruta)
