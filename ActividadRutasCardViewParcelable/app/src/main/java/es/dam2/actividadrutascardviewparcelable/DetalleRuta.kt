@@ -45,6 +45,8 @@ class DetalleRuta : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             intent.putExtra("RutaModificada", ruta)
             intent.putExtra("PosicionModificada", posicionSeleccionada)
+            // Establecemos el resultado y el intent
+            setResult(RESULT_OK, intent)
             this.finish()
         }
     }

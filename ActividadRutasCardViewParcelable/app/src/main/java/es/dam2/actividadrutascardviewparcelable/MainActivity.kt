@@ -3,6 +3,7 @@ package es.dam2.actividadrutascardviewparcelable
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -13,6 +14,24 @@ import es.dam2.actividadrutascardviewparcelable.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var customAdapter: CustomAdapter
+    private lateinit var dataset: MutableList<Dato>
+    // Declaramos el launcher para recibir el resultado de DetalleRuta.
+    // Esta variable es de tipo ActivityResultLauncher
+    private val launcherDetalle = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val data = result.data
+            val posicionModificada = data?.getIntExtra("PosicionModificada", -1) ?: -1
+            val rutaModificada = data?.getParcelableExtra<Dato>("RutaModificada")
+
+            if (posicionModificada != -1 && rutaModificada != null) {
+                dataset[posicionModificada] = rutaModificada
+                customAdapter.notifyItemChanged(posicionModificada)
+            }
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +44,70 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        dataset = mutableListOf(
+            Dato(
+                R.drawable.lago,
+                "A la orilla del lago",
+                "4 km",
+                "fácil",
+                "30 minutos",
+                "Pasear a la orilla del lago Pipicaca de transquis XD",
+                false
+            ),
+            Dato(
+                R.drawable.bosque,
+                "Bosque mágico",
+                "7 km",
+                "media",
+                "60 minutos",
+                "Piérdete en el bosque,a saber si te encuentran luego jeje",
+                false
+            ),
+            Dato(
+                R.drawable.costa,
+                "Solecico en la playa",
+                "3 km",
+                "fácil",
+                "20 minutos",
+                "Lo mismo que el lago pero en la playa, yo que sé",
+                false
+            ),
+            Dato(
+                R.drawable.cascada,
+                "Entrenamiento con el Pilar de la roca",
+                "20 km",
+                "difícil",
+                "10 horas",
+                "Entrenamiento con el Pilar de la roca para hacer lo de aguantar el chorro de la cascada en la espalda y luego pegarte tremendo paseo con una roca enorme atada a la cintura",
+                false
+            ),
+            Dato(
+                R.drawable.montana,
+                "A la Sombra de la Sierra",
+                "16 km",
+                "difícil",
+                "6 horas",
+                "Si te encuentro, gritaré a viva voz, que prefiero verte que, ganar la guerra. Levántate mi corazón, te escondiste a la sombra de la sierra",
+                false
+            ),
+            Dato(
+                R.drawable.desierto,
+                "Steel Ball Run",
+                "6000 km",
+                "DIOS",
+                "116 días",
+                "Quiero descubir el secreto de esas bolas de acero",
+                false
+            ),
+        )
+
         // A la derecha de los corchetes, se define el comportamiento de la función onItemClick
         // que pusimos como parámetro de CustomAdapter
-        customAdapter = CustomAdapter(RepositorioRutas.dataset) { dato, posicion ->
+        customAdapter = CustomAdapter(dataset) { dato, posicion ->
             val intent = Intent(this, DetalleRuta::class.java)
             intent.putExtra("RutaSeleccionada", dato)
             intent.putExtra("PosicionSeleccionada", posicion)
-            startActivity(intent)
+            launcherDetalle.launch(intent)
         }
 
         binding.txtRutasDisponibles.text = "${customAdapter.itemCount} rutas disponibles"
